@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support for calling noisy-only version of `EnsembleKalmanFilters.assimilate_data` in EnsembleKalmanFiltersExt.
+
 ### Changed
 
 - Simplified `split_clean_noisy` to be more generic.
