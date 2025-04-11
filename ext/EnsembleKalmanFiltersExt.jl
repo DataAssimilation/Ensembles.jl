@@ -1,7 +1,12 @@
 module EnsembleKalmanFiltersExt
 
 using Ensembles:
-    Ensembles, AbstractEnsemble, Ensemble, get_ensemble_matrix, get_ensemble_dicts, get_member_vector
+    Ensembles,
+    AbstractEnsemble,
+    Ensemble,
+    get_ensemble_matrix,
+    get_ensemble_dicts,
+    get_member_vector
 using EnsembleKalmanFilters: EnsembleKalmanFilters, EnKF
 
 function Ensembles.assimilate_data(
