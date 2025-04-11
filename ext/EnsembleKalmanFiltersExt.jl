@@ -5,7 +5,11 @@ using Ensembles:
 using EnsembleKalmanFilters: EnsembleKalmanFilters, EnKF
 
 function Ensembles.assimilate_data(
-    filter::EnKF, ensemble::AbstractEnsemble, ensemble_obs::AbstractEnsemble, y_obs, log_data
+    filter::EnKF,
+    ensemble::AbstractEnsemble,
+    ensemble_obs::AbstractEnsemble,
+    y_obs,
+    log_data,
 )
     X_matrix = EnsembleKalmanFilters.assimilate_data(
         filter,
@@ -20,7 +24,12 @@ function Ensembles.assimilate_data(
 end
 
 function Ensembles.assimilate_data(
-    filter::EnKF, ensemble::AbstractEnsemble, ensemble_obs_clean::AbstractEnsemble, ensemble_obs_noisy::AbstractEnsemble, y_obs, log_data
+    filter::EnKF,
+    ensemble::AbstractEnsemble,
+    ensemble_obs_clean::AbstractEnsemble,
+    ensemble_obs_noisy::AbstractEnsemble,
+    y_obs,
+    log_data,
 )
     X_matrix = EnsembleKalmanFilters.assimilate_data(
         filter,
