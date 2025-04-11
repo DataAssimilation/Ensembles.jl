@@ -116,7 +116,9 @@ end
 append!(examples_markdown, examples_extras_markdown)
 
 # Set metadata for doctests.
-DocMeta.setdocmeta!(Ensembles, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true)
+DocMeta.setdocmeta!(
+    Ensembles, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true
+)
 modules = [Ensembles]
 
 Ensembles.install(:Lorenz63)
@@ -128,18 +130,24 @@ push!(modules, ext)
 Ensembles.install(:EnsembleKalmanFilters)
 using EnsembleKalmanFilters
 ext = Base.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
-DocMeta.setdocmeta!(ext, :DocTestSetup, :(using Ensembles, Test, EnsembleKalmanFilters); recursive=true)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, EnsembleKalmanFilters); recursive=true
+)
 push!(modules, ext)
 
 Ensembles.install(:NormalizingFlowFilters)
 using NormalizingFlowFilters
 ext = Base.get_extension(Ensembles, :NormalizingFlowFiltersExt)
-DocMeta.setdocmeta!(ext, :DocTestSetup, :(using Ensembles, Test, NormalizingFlowFilters); recursive=true)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, NormalizingFlowFilters); recursive=true
+)
 push!(modules, ext)
 
 using Statistics
 ext = Base.get_extension(Ensembles, :StatisticsExt)
-DocMeta.setdocmeta!(ext, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true
+)
 push!(modules, ext)
 
 makedocs(;
