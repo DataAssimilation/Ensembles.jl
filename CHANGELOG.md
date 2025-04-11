@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Simplified `split_clean_noisy` to be more generic.
+- Fixed call to `NormalizingFlowFilters.assimilate_data` to pass only one set of observations.
+
+### Removed
+
+- Support for Julia <1.9.
 
 ## [v1.1.0] - 2024-11-05
 
