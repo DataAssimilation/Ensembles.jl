@@ -40,11 +40,11 @@ macro initial_imports()
             using CairoMakie
 
             using Lorenz63: Lorenz63
-            ext = Ensembles.get_extension(Ensembles, :Lorenz63Ext)
+            ext = Base.get_extension(Ensembles, :Lorenz63Ext)
             using .ext
 
             using EnsembleKalmanFilters: EnsembleKalmanFilters
-            ext = Ensembles.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
+            ext = Base.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
             using .ext
 
             using Statistics: Statistics, mean, var

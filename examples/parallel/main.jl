@@ -27,7 +27,7 @@ macro initial_imports()
             using Random: Random
 
             using Lorenz63: Lorenz63
-            ext = Ensembles.get_extension(Ensembles, :Lorenz63Ext)
+            ext = Base.get_extension(Ensembles, :Lorenz63Ext)
             using .ext
         end,
     )

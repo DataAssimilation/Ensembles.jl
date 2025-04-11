@@ -54,4 +54,8 @@ include("parallel_operators.jl")
 include("noisy_observer.jl")
 include("assimilation.jl")
 include("installs.jl")
+
+Base.@deprecate_binding HAS_NATIVE_EXTENSIONS true false ": Julia versions without native extensions are no longer supported. Use `true` instead."
+Base.@deprecate get_extension(mod, sym) Base.get_extension(mod, sym)
+
 end # module

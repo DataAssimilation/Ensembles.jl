@@ -1,12 +1,11 @@
 name = "Ensembles"
 uuid = "6e62b0a0-f6e2-496f-914a-544f223f57d3"
 authors = ["Grant Bruer gbruer15@gmail.com and contributors"]
-version = "v1.1.0"
+version = "1.1.0"
 
 [deps]
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
-PackageExtensionCompat = "65ce6f38-6b18-4e1d-a461-8949797d7930"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
@@ -31,7 +30,6 @@ JLD2 = "0.4, 0.5"
 Lorenz63 = "0.1.0"
 Lorenz96 = "0.3.0"
 NormalizingFlowFilters = "0,1"
-PackageExtensionCompat = "1.0.2"
 Pkg = "1.7"
 Random = "1.7"
 Statistics = "1.7"

@@ -13,21 +13,18 @@ ts = @testset ReportingTestSet "" begin
 
     # Set metadata for doctests.
     DocMeta.setdocmeta!(Ensembles, :DocTestSetup, :(using Ensembles, Test); recursive=true)
-    if Ensembles.HAS_NATIVE_EXTENSIONS
-        Ensembles.install(:Lorenz63)
-        using Lorenz63
-        DocMeta.setdocmeta!(
-            Ensembles.get_extension(Ensembles, :Lorenz63Ext),
-            :DocTestSetup,
-            :(using Ensembles, Test);
-            recursive=true,
-        )
-    end
+
+    Ensembles.install(:Lorenz63)
+    using Lorenz63
+    DocMeta.setdocmeta!(
+        Ensembles.get_extension(Ensembles, :Lorenz63Ext),
+        :DocTestSetup,
+        :(using Ensembles, Test);
+        recursive=true,
+    )
 
     doctest(Ensembles; manual=true)
-    if Ensembles.HAS_NATIVE_EXTENSIONS
-        doctest(Ensembles.get_extension(Ensembles, :Lorenz63Ext); manual=true)
-    end
+    doctest(Base.get_extension(Ensembles, :Lorenz63Ext); manual=true)
 
     # Run examples.
     examples_dir = joinpath(@__DIR__, "..", "examples")
