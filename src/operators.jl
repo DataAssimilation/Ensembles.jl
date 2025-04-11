@@ -96,8 +96,9 @@ end
 """
 For non-noisy operators, simply return the given ensemble and `nothing`.
 """
-split_clean_noisy(M::AbstractOperator, ensemble_obs::AbstractEnsemble) =
+function split_clean_noisy(M::AbstractOperator, ensemble_obs::AbstractEnsemble)
     ensemble_obs, nothing
+end
 
 """
 For non-noisy operators, simply return the given member and `nothing`.
