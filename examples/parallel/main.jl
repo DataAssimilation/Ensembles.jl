@@ -21,15 +21,14 @@ macro initial_imports()
         quote
             using Ensembles
             using LinearAlgebra: norm
-            using Distributed:
-                addprocs, rmprocs, @everywhere, remotecall, fetch, WorkerPool
+            using Distributed: addprocs, rmprocs, @everywhere, remotecall, fetch, WorkerPool
             using Test: @test
             using Random: Random
 
             using Lorenz63: Lorenz63
             ext = Ensembles.get_extension(Ensembles, :Lorenz63Ext)
             using .ext
-        end,
+        end
     )
 end
 

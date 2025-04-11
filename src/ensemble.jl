@@ -185,8 +185,9 @@ julia> @test ensemble.state_keys == [:state];
 julia> @test ensemble.monolithic_storage == false;
 ```
 """
-Ensemble(ensemble::Ensemble, members::Vector, state_keys::Vector{Symbol}) =
+function Ensemble(ensemble::Ensemble, members::Vector, state_keys::Vector{Symbol})
     Ensemble(members, state_keys; ensemble.monolithic_storage)
+end
 
 function Ensemble{K,V}(
     ensemble::Ensemble{K,V}, members::Vector, state_keys::Vector{Symbol}
@@ -215,8 +216,9 @@ julia> @test ensemble.state_keys == [:i, :state];
 julia> @test ensemble.monolithic_storage == false;
 ```
 """
-Ensemble(ensemble::Ensemble, members::Vector) =
+function Ensemble(ensemble::Ensemble, members::Vector)
     Ensemble(members; ensemble.monolithic_storage)
+end
 
 function Ensemble{K,V}(ensemble::Ensemble{K,V}, members::Vector) where {K,V}
     return Ensemble(members; ensemble.monolithic_storage)
@@ -268,8 +270,9 @@ julia> @test e2.state_keys == [:i, :obs, :state];
 ```
 See also [`merge!`](@ref).
 """
-Base.merge(e::Ensemble, e1::Ensemble) =
+function Base.merge(e::Ensemble, e1::Ensemble)
     Ensemble(merge.(e.members, e1.members); e.monolithic_storage)
+end
 
 """
     get_ensemble_size(ensemble::Ensemble)
