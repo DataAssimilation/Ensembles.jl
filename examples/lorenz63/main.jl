@@ -33,24 +33,23 @@ macro initial_imports()
         quote
             using Ensembles
             using LinearAlgebra: norm
-            using Distributed:
-                addprocs, rmprocs, @everywhere, remotecall, fetch, WorkerPool
+            using Distributed: addprocs, rmprocs, @everywhere, remotecall, fetch, WorkerPool
             using Test: @test
             using Random: Random
             using CairoMakie
 
             using Lorenz63: Lorenz63
-            ext = Ensembles.get_extension(Ensembles, :Lorenz63Ext)
+            ext = Base.get_extension(Ensembles, :Lorenz63Ext)
             using .ext
 
             using EnsembleKalmanFilters: EnsembleKalmanFilters
-            ext = Ensembles.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
+            ext = Base.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
             using .ext
 
             using Statistics: Statistics, mean, var
             using LinearAlgebra: Diagonal
             using EnsembleKalmanFilters: EnKF
-        end,
+        end
     )
 end
 

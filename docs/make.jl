@@ -116,19 +116,42 @@ end
 append!(examples_markdown, examples_extras_markdown)
 
 # Set metadata for doctests.
-DocMeta.setdocmeta!(Ensembles, :DocTestSetup, :(using Ensembles, Test); recursive=true)
-if Ensembles.HAS_NATIVE_EXTENSIONS
-    Ensembles.install(:Lorenz63)
-    using Lorenz63
-    DocMeta.setdocmeta!(
-        Ensembles.get_extension(Ensembles, :Lorenz63Ext),
-        :DocTestSetup,
-        :(using Ensembles, Test);
-        recursive=true,
-    )
-end
+DocMeta.setdocmeta!(
+    Ensembles, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true
+)
+modules = [Ensembles]
+
+Ensembles.install(:Lorenz63)
+using Lorenz63
+ext = Base.get_extension(Ensembles, :Lorenz63Ext)
+DocMeta.setdocmeta!(ext, :DocTestSetup, :(using Ensembles, Test, Lorenz63); recursive=true)
+push!(modules, ext)
+
+Ensembles.install(:EnsembleKalmanFilters)
+using EnsembleKalmanFilters
+ext = Base.get_extension(Ensembles, :EnsembleKalmanFiltersExt)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, EnsembleKalmanFilters); recursive=true
+)
+push!(modules, ext)
+
+Ensembles.install(:NormalizingFlowFilters)
+using NormalizingFlowFilters
+ext = Base.get_extension(Ensembles, :NormalizingFlowFiltersExt)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, NormalizingFlowFilters); recursive=true
+)
+push!(modules, ext)
+
+using Statistics
+ext = Base.get_extension(Ensembles, :StatisticsExt)
+DocMeta.setdocmeta!(
+    ext, :DocTestSetup, :(using Ensembles, Test, Statistics); recursive=true
+)
+push!(modules, ext)
+
 makedocs(;
-    modules=[Ensembles, Ensembles.get_extension(Ensembles, :Lorenz63Ext)],
+    modules,
     authors="Grant Bruer gbruer15@gmail.com and contributors",
     sitename="Ensembles.jl",
     source=DOC_STAGE,
@@ -147,13 +170,14 @@ makedocs(;
         "Coverage" => "coverage/index.md",
     ],
     doctest=false,
+    warnonly=true,
 )
 
-if Ensembles.HAS_NATIVE_EXTENSIONS
-    # Maybe clean up a little.
-    try
-        Pkg.rm("Lorenz63")
-    catch e
-        @warn e
-    end
+# Maybe clean up a little.
+try
+    Pkg.rm("Lorenz63")
+    Pkg.rm("EnsembleKalmanFilters")
+    Pkg.rm("NormalizingFlowFilters")
+catch e
+    @warn e
 end

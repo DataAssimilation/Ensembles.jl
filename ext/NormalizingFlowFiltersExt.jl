@@ -15,7 +15,6 @@ function Ensembles.assimilate_data(
     X_matrix = NormalizingFlowFilters.assimilate_data(
         filter,
         Float64.(get_ensemble_matrix(ensemble)),
-        Float64.(get_ensemble_matrix(ensemble_obs_clean)),
         Float64.(get_ensemble_matrix(ensemble_obs_noisy)),
         get_member_vector(ensemble_obs_clean, y_obs),
         log_data,
