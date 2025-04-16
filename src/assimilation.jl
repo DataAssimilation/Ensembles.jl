@@ -58,3 +58,9 @@ function assimilate_data(
 )
     return prior_state
 end
+
+function get_data(filter::Nothing)
+    return nothing
+end
+
+function set_data!(filter::Nothing, params::Nothing) end

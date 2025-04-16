@@ -20,7 +20,7 @@ function Ensembles.assimilate_data(
         filter,
         Float64.(get_ensemble_matrix(ensemble)),
         Float64.(get_ensemble_matrix(ensemble_obs)),
-        get_member_vector(ensemble_obs_clean, y_obs),
+        get_member_vector(ensemble_obs, y_obs),
         log_data,
     )
     members = get_ensemble_dicts(ensemble, X_matrix)
@@ -48,5 +48,8 @@ function Ensembles.assimilate_data(
     posterior = Ensemble(members, ensemble.state_keys)
     return posterior
 end
+
+Ensembles.get_data(filter::EnKF) = nothing
+Ensembles.set_data!(filter::EnKF, params::Nothing) = nothing
 
 end
