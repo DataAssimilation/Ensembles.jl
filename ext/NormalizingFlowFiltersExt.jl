@@ -1,7 +1,12 @@
 module NormalizingFlowFiltersExt
 
 using Ensembles:
-    Ensembles, AbstractEnsemble, Ensemble, get_ensemble_matrix, get_ensemble_dicts, get_member_vector
+    Ensembles,
+    AbstractEnsemble,
+    Ensemble,
+    get_ensemble_matrix,
+    get_ensemble_dicts,
+    get_member_vector
 using NormalizingFlowFilters: NormalizingFlowFilters, NormalizingFlowFilter
 
 function Ensembles.assimilate_data(
