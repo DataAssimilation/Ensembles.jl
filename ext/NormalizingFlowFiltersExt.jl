@@ -14,14 +14,16 @@ function Ensembles.assimilate_data(
     ensemble::AbstractEnsemble,
     ensemble_obs::AbstractEnsemble,
     y_obs,
-    log_data,
+    log_data;
+    kwargs...
 )
     X_matrix = NormalizingFlowFilters.assimilate_data(
         filter,
         Float64.(get_ensemble_matrix(ensemble)),
         Float64.(get_ensemble_matrix(ensemble_obs)),
         get_member_vector(ensemble_obs, y_obs),
-        log_data,
+        log_data;
+        kwargs...
     )
     members = get_ensemble_dicts(ensemble, X_matrix)
     posterior = Ensemble(members, ensemble.state_keys)
@@ -34,14 +36,16 @@ function Ensembles.assimilate_data(
     ensemble_obs_clean::AbstractEnsemble,
     ensemble_obs_noisy::AbstractEnsemble,
     y_obs,
-    log_data,
+    log_data;
+    kwargs...
 )
     X_matrix = NormalizingFlowFilters.assimilate_data(
         filter,
         Float64.(get_ensemble_matrix(ensemble)),
         Float64.(get_ensemble_matrix(ensemble_obs_noisy)),
         get_member_vector(ensemble_obs_clean, y_obs),
-        log_data,
+        log_data;
+        kwargs...
     )
     members = get_ensemble_dicts(ensemble, X_matrix)
     posterior = Ensemble(members, ensemble.state_keys)

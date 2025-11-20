@@ -224,6 +224,11 @@ function Ensemble{K,V}(ensemble::Ensemble{K,V}, members::Vector) where {K,V}
     return Ensemble(members; ensemble.monolithic_storage)
 end
 
+function Ensemble(data_matrix::Array{T, N}, state_key; kwargs...) where {T, N}
+    members = [Dict(state_key=>d) for d in eachslice(data_matrix; dims=N)]
+    return Ensemble(members, [state_key]; kwargs...)
+end
+
 """
     merge!(e::Ensemble, e1::Ensemble)
 
